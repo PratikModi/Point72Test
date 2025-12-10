@@ -1,7 +1,7 @@
 package com.point72.invertservice.service;
 
-import com.point72.invertservice.model.RequestResponse;
-import com.point72.invertservice.respository.RequestResponseRepository;
+import com.point72.invertservice.model.InvertResponse;
+import com.point72.invertservice.repository.RequestResponseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +25,9 @@ public class InvertService {
         return sb.toString().trim();
     }
 
-    public RequestResponse processAndSave(String request){
+    public InvertResponse processAndSave(String request){
         String response = invertWords(request);
-        RequestResponse rr = RequestResponse.builder()
+        InvertResponse rr = InvertResponse.builder()
                 .requestText(request)
                 .responseText(response)
                 .createdAt(LocalDateTime.now())
@@ -36,11 +36,11 @@ public class InvertService {
         return repository.save(rr);
     }
 
-    public List<RequestResponse> searchByWord(String word){
-        return repository.searchByWord(word);
+    public List<InvertResponse> searchByWord(String word){
+        return repository.findByRequestTextContainingIgnoreCaseOrResponseTextContainingIgnoreCase(word,word);
     }
 
-    public List<RequestResponse> findAll(){
+    public List<InvertResponse> findAll(){
         return repository.findAll();
     }
 
