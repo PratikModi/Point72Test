@@ -12,4 +12,6 @@ public interface RequestResponseRepository extends JpaRepository<RequestResponse
             "WHERE LOWER(rr.requestText) LIKE LOWER(CONCAT('%', :word, '%')) " +
             "   OR LOWER(rr.responseText) LIKE LOWER(CONCAT('%', :word, '%'))")
     List<RequestResponse> searchByWord(String word);
+
+    List<RequestResponse> findByRequestTextContainingIgnoreCaseOrResponseTextContainingIgnoreCase(String requestText, String responseText);
 }
