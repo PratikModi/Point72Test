@@ -24,8 +24,8 @@ public class InvertController {
     }
 
     @GetMapping("/search")
-    public List<RequestResponse> searchByWord(@Valid @RequestBody InvertRequest invertRequest) {
-        return requestResponseRepository.findByRequestTextContainingIgnoreCaseOrResponseTextContainingIgnoreCase(invertRequest.getSentence(), invertRequest.getSentence());
+    public List<RequestResponse> searchByWord(@RequestParam String word) {
+        return requestResponseRepository.findByRequestTextContainingIgnoreCaseOrResponseTextContainingIgnoreCase(word, word);
     }
 
     @GetMapping("/history")
