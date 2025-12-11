@@ -44,11 +44,11 @@ cd invert-service
 2. Build the Project
 sh mvn clean package
 
-3. Run the Application
-USING MAVEN
-sh mvn spring-boot:run
-OR
-java -jar target/invert-service-0.0.1-SNAPSHOT.jar
+3. Run the Application  
+USING MAVEN  
+sh mvn spring-boot:run  
+OR  
+java -jar target/invert-service-0.0.1-SNAPSHOT.jar  
 
 Application will be available at:  
 http://localhost:8080
